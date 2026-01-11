@@ -6,3 +6,121 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* universal reset on universal selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* project wide definitions to be inherited by child elements */
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px; /* padding around whole site to act as a frame */
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 131, 0.8)
+    ),
+    url(../img/hero.jpg); /* multiple images for background-image */
+  background-size: cover;
+  background-position: top;
+
+  /* (x y) coord pairs to keep */
+  clip-path: polygon(0 0, 100% 0%, 100% 85vh, 0 100%);
+
+  /* position relative as parent of logo-box */
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+}
+
+.logo {
+  height: 35px;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* in relation to this element itself */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  /* to remove unnecessary twitch from header transform */
+  backface-visibility: hidden;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInFromLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+
+  animation: moveInFromRight 1s ease-in;
+}
+
+@keyframes moveInFromLeft {
+  /* before animation starts */
+  0% {
+    opacity: 0;
+    transform: translateX(-100px)
+  }
+
+  /* transition between start and end */
+  80% {
+    transform: translateX(10px);
+  }
+
+  /* when animation ends */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInFromRight {
+  /* before animation starts */
+  0% {
+    opacity: 0;
+    transform: translateX(100px)
+  }
+
+  /* transition between start and end */
+  80% {
+    transform: translateX(-10px);
+  }
+
+  /* when animation ends */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

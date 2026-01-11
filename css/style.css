@@ -57,11 +57,13 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%); /* in relation to this element itself */
+  text-align: center;
 }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  margin-bottom: 60px;
 
   /* to remove unnecessary twitch from header transform */
   backface-visibility: hidden;
@@ -123,4 +125,78 @@ body {
     opacity: 1;
     transform: translate(0);
   }
+}
+
+@keyframes moveInFromBottom {
+  /* before animation starts */
+  0% {
+    opacity: 0;
+    transform: translateY(25px)
+  }
+
+  /* when animation ends */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+/* to be moved to separate files later */
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 100px;
+  position: relative;
+
+  /* transition on initial state, the transform for hover and active is relative */
+  transition: all .2s
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+
+/* when click button, will already be hovering */
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+}
+
+.btn-white {
+  background-color: white;
+  color: #777;
+}
+
+.btn-animated {
+  animation: moveInFromBottom .8s ease-in;
+  animation-fill-mode: backwards; /* apply keyframe 0% before animation starts */
+}
+
+.btn::after {
+  /* content and display required for ::after, even if empty */
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  /* initial element for .btn:hover::after */
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: white;
+}
+
+.btn:hover::after {
+  transform: scale(1.15);
+  opacity: 0; /* make it disappear after transition time */
 }

@@ -8,20 +8,34 @@ Dark green: #28b485
 */
 
 /* universal reset on universal selector */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* enforce inheritance since by default box-sizing does not */
+  box-sizing: inherit;
+}
+
+/* root font size */
+html {
+  /*
+    equivalent to 10px = (16px default * 62.5% setting)
+    easy to do REM math for other properties
+  */
+  font-size: 62.5%;
 }
 
 /* project wide definitions to be inherited by child elements */
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.7;
   color: #777;
-  padding: 30px; /* padding around whole site to act as a frame */
+  padding: 3rem; /* padding around whole site to act as a frame */
+
+  box-sizing: border-box;
 }
 
 .header {
@@ -42,17 +56,17 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
-  top: 3%;
-  left: 3%;
+  top: 4rem;
+  left: 4rem;
 }
 
-.logo {
-  height: 35px;
+.header__logo {
+  height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -63,28 +77,28 @@ body {
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 
   /* to remove unnecessary twitch from header transform */
   backface-visibility: hidden;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   animation-name: moveInFromLeft;
   animation-duration: 1s;
   animation-timing-function: ease-in;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.75rem;
 
   animation: moveInFromRight 1s ease-in;
 }
@@ -93,12 +107,12 @@ body {
   /* before animation starts */
   0% {
     opacity: 0;
-    transform: translateX(-100px)
+    transform: translateX(-10rem)
   }
 
   /* transition between start and end */
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
 
   /* when animation ends */
@@ -112,12 +126,12 @@ body {
   /* before animation starts */
   0% {
     opacity: 0;
-    transform: translateX(100px)
+    transform: translateX(10rem)
   }
 
   /* transition between start and end */
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   /* when animation ends */
@@ -131,7 +145,7 @@ body {
   /* before animation starts */
   0% {
     opacity: 0;
-    transform: translateY(25px)
+    transform: translateY(2.5rem)
   }
 
   /* when animation ends */
@@ -147,8 +161,8 @@ body {
   display: inline-block;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
-  border-radius: 100px;
+  padding: 1.5rem 4rem;
+  border-radius: 10rem;
   position: relative;
 
   /* transition on initial state, the transform for hover and active is relative */
@@ -156,22 +170,22 @@ body {
 }
 
 .btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+  transform: translateY(-.5rem);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, .2);
 }
 
 /* when click button, will already be hovering */
 .btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
 }
 
-.btn-white {
+.btn--white {
   background-color: white;
   color: #777;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInFromBottom .8s ease-in;
   animation-fill-mode: backwards; /* apply keyframe 0% before animation starts */
 }
@@ -182,7 +196,7 @@ body {
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -192,7 +206,7 @@ body {
   transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: white;
 }
 

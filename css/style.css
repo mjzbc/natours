@@ -1,76 +1,5 @@
-/* universal reset on universal selector */
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  /* enforce inheritance since by default box-sizing does not */
-  box-sizing: inherit; }
-
-/* root font size */
-html {
-  /*
-    equivalent to 10px = (16px default * 62.5% setting)
-    easy to do REM math for other properties
-  */
-  font-size: 62.5%; }
-
-/* project wide definitions to be inherited by child elements */
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  /* padding around whole site to act as a frame */
-  box-sizing: border-box; }
-
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  /* multiple images for background-image */
-  background-size: cover;
-  background-position: top;
-  /* (x y) coord pairs to keep */
-  clip-path: polygon(0 0, 100% 0%, 100% 85vh, 0 100%);
-  /* position relative as parent of logo-box */
-  position: relative; }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* in relation to this element itself */
-    text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  margin-bottom: 6rem;
-  /* to remove unnecessary twitch from header transform */
-  backface-visibility: hidden; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInFromLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-in; }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInFromRight 1s ease-in; }
-
+/* abstracts */
+/* base */
 @keyframes moveInFromLeft {
   /* before animation starts */
   0% {
@@ -107,8 +36,59 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
+/* universal reset on universal selectors */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* enforce inheritance since by default box-sizing does not */
+  box-sizing: inherit; }
+
+/* root font size */
+html {
+  /*
+    defines what 1rem is
+    equivalent to 10px = (16px default * 62.5% setting)
+    easy to do REM math for other properties
+  */
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  /* padding around whole site to act as a frame */ }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  /* to remove unnecessary twitch from header transform */
+  backface-visibility: hidden; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInFromLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInFromRight 1s ease-in; }
+
+/* components */
 .btn {
-  /* to be moved to separate files later */
   /* when click button, will already be hovering */ }
   .btn:link, .btn:visited {
     display: inline-block;
@@ -151,3 +131,30 @@ body {
     z-index: -1;
     /* initial element for .btn:hover::after */
     transition: all .4s; }
+
+/* layout */
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* multiple images for background-image */
+  background-size: cover;
+  background-position: top;
+  /* (x y) coord pairs to keep */
+  clip-path: polygon(0 0, 100% 0%, 100% 85vh, 0 100%);
+  /* position relative as parent of logo-box */
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* in relation to this element itself */
+    text-align: center; }
+
+/* pages */

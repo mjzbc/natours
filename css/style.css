@@ -220,6 +220,25 @@ body {
       box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
       z-index: 20; }
 
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: .3rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: all .5s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    /* gradient on the icon, need display, background-image, webkit-background-clip and color */
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: scale(1.1) translateY(-1.5rem); }
+
 /* layout */
 .row {
   max-width: 114rem;
@@ -254,7 +273,7 @@ body {
 .header {
   height: 95vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  /* multiple images for background-image */
+  /* multiple layers for background-image comma separated */
   background-size: cover;
   background-position: top;
   /* (x y) coord pairs to keep */
@@ -285,3 +304,15 @@ body {
     95 - 75 = 20vh
   */
   margin-top: -20vh; }
+
+.section-features {
+  padding: 20rem 0;
+  margin-top: -10rem;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../../img/nat-4.jpg);
+  /* multiple layers for background-image comma separated */
+  background-size: cover;
+  /* can use clip and polygon, but will use skew */
+  transform: skewY(-7deg);
+  /* select all only DIRECT children, row in this case */ }
+  .section-features > * {
+    transform: skewY(7deg); }

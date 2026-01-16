@@ -9,3 +9,26 @@
   */
   margin-top: -20vh;
 }
+
+.section-features {
+  padding: 20rem 0;
+  margin-top: -10rem;
+
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.8)
+  ),
+  url(../../img/nat-4.jpg); /* multiple layers for background-image comma separated */
+
+  background-size: cover;
+
+  /* can use clip and polygon, but will use skew */
+  transform: skewY(-7deg);
+
+  /* select all only DIRECT children, row in this case */
+  & > * {
+    transform: skewY(7deg);
+  }
+
+}

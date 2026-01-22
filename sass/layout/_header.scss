@@ -10,6 +10,7 @@
   background-position: top;
 
   /* (x y) coord pairs to keep */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
   clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0 100%);
 
   /* position relative as parent of logo-box */
